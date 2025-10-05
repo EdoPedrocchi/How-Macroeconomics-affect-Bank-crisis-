@@ -33,19 +33,13 @@ BankingCrisis, cons_USD, inv_USD, finv_USD, imports_USD
 ---
 ## 📖LIterature Review
 
-..cecefecr
+WIP
+
+
 ---
 ## 🚀 Project Pipeline
 
-### **1. Data Loading & Understanding**
-1. Load the dataset (`pandas.read_csv()`).
-2. Inspect shape, types, and missingness (`df.info()`, `df.describe()`).
-3. Verify that `BankingCrisis` is binary (0/1).
-4. Confirm identifiers (`countryname`, `ISO3`, `id`, `year`).
-
----
-
-### **2. Data Cleaning & Preprocessing**
+### Data Cleaning & Preprocessing**
 1. **Handle Missing Values:**
    - Visualize (`missingno` or `sns.heatmap`).
    - Impute or drop (mean, median, interpolation, or removal).
@@ -65,9 +59,184 @@ BankingCrisis, cons_USD, inv_USD, finv_USD, imports_USD
    - Correlation heatmaps, pairplots, and mean comparisons (crisis vs. non-crisis).  
 3. **Temporal & Cross-Country Trends:**  
    - Plot macroeconomic variables over time and across countries.
+  
+---
+# Initial Data Overview
+
+## Dataset Shape
+- **Rows:** 58,343  
+- **Columns:** 19
+
+## Data Types
+| Column          | Type    |
+|-----------------|---------|
+| countryname     | object  |
+| ISO3            | object  |
+| id              | object  |
+| year            | int64   |
+| rGDP_pc         | float64 |
+| rGDP_USD        | float64 |
+| cons_GDP        | float64 |
+| inv_GDP         | float64 |
+| finv_GDP        | float64 |
+| exports_GDP     | float64 |
+| USDfx           | float64 |
+| CPI             | float64 |
+| infl            | float64 |
+| pop             | float64 |
+| BankingCrisis   | float64 |
+| cons_USD        | float64 |
+| inv_USD         | float64 |
+| finv_USD        | float64 |
+| imports_USD     | float64 |
 
 
-   Missing values
+## Descriptive Statistics
+|       | year     | rGDP_pc       | rGDP_USD      | cons_GDP    | inv_GDP    | finv_GDP   | exports_GDP | USDfx       | CPI         | infl         | pop        | BankingCrisis | cons_USD     | inv_USD     | finv_USD    | imports_USD |
+|-------|---------|---------------|---------------|------------|-----------|-----------|-------------|------------|------------|-------------|------------|---------------|-------------|------------|------------|-------------|
+| count | 58343   | 22233         | 16425         | 12769      | 15256     | 14035     | 16707       | 23321      | 19358      | 25238       | 51938      | 19933         | 12464       | 14148      | 13713      | 19680       |
+| mean  | 1880.58 | 1.719e+07     | 2.073e+05     | 82.45      | 22.91     | 21.87     | 37.07       | 195.47     | 2.93e+09   | 3.82e+22    | 13.40      | 0.0182        | 1.546e+05   | 6.166e+04  | 5.695e+04  | 3.430e+04   |
+| std   | 128.68  | 1.112e+08     | 1.059e+06     | 22.42      | 11.27     | 10.31     | 56.74       | 1596.12    | 2.405e+11  | 6.065e+24   | 67.91      | 0.134         | 8.662e+05   | 5.030e+05  | 4.172e+05  | 2.261e+05   |
+| min   | 1086    | 4.51e-08      | 0.0772        | 8.84       | -21.55    | -4.97     | 1.75e-11    | 3.49e-16   | 1.73e-15   | -100        | 0.000004   | 0.0           | 5.84e-08    | -1.628e+04 | -748.22    | 8.88e-10    |
+| 25%   | 1835    | 6004          | 3315          | 71.41      | 16.08     | 15.40     | 14.55       | 0.5698     | 0.5301     | 0.0         | 0.158      | 0.0           | 941.88      | 185.74     | 179.95     | 58.62       |
+| 50%   | 1903    | 25303         | 14039         | 80.35      | 22.07     | 21.06     | 26.01       | 1.3399     | 19.61      | 3.25        | 1.409      | 0.0           | 5380.10     | 1237.79    | 1099.59    | 603.15      |
+| 75%   | 1969    | 216734        | 83831         | 90.65      | 27.83     | 26.29     | 43.83       | 6.911      | 94.52      | 8.93        | 5.724      | 0.0           | 37433.31    | 9452.12    | 9306.72    | 5409.95     |
+| max   | 2030    | 1.767e+09     | 2.419e+07     | 298.38     | 243.18    | 157.87    | 1168.42     | 89500      | 2.750e+13  | 9.635e+26   | 1534.73    | 1.0           | 2.449e+07   | 1.804e+07  | 1.346e+07  | 2.106e+07   |
+
+
+## Top Countries (Value Counts)
+| countryname    | count |
+|----------------|-------|
+| United Kingdom | 945   |
+| Spain          | 754   |
+| Sweden         | 741   |
+| Italy          | 721   |
+| Germany        | 705   |
+
+| ISO3 | count |
+|------|-------|
+| GBR  | 945   |
+| ESP  | 754   |
+| SWE  | 741   |
+| ITA  | 721   |
+| DEU  | 705   |
+
+| id   | count |
+|------|-------|
+| GBR  | 945   |
+| ESP  | 754   |
+| SWE  | 741   |
+| ITA  | 721   |
+| DEU  | 705   |
+
+# Missing Value Analysis
+| Column        | Missing Count | Missing % |
+|---------------|---------------|-----------|
+| cons_USD      | 45,879        | 78.64     |
+| cons_GDP      | 45,574        | 78.11     |
+| finv_USD      | 44,630        | 76.50     |
+| finv_GDP      | 44,308        | 75.94     |
+| inv_USD       | 44,195        | 75.75     |
+| inv_GDP       | 43,087        | 73.85     |
+| rGDP_USD      | 41,918        | 71.85     |
+| exports_GDP   | 41,636        | 71.36     |
+| CPI           | 38,985        | 66.82     |
+| imports_USD   | 38,663        | 66.27     |
+| BankingCrisis | 38,410        | 65.83     |
+| rGDP_pc       | 36,110        | 61.89     |
+| USDfx         | 35,022        | 60.03     |
+| infl          | 33,105        | 56.74     |
+| pop           | 6,405         | 10.98     |
+
+# Target Variable Analysis: `BankingCrisis`
+| Value | Count |
+|-------|-------|
+| 0.0   | 19,571|
+| 1.0   | 362   |
+
+**Crisis Class Distribution (%)**
+| Value | Proportion |
+|-------|------------|
+| 0.0   | 98.18      |
+| 1.0   | 1.82       
+
+|<img width="708" height="545" alt="image" src="https://github.com/user-attachments/assets/7cc39a23-1b20-478c-9138-487a16acf386" />
+
+--- Univariate Distributions (Histograms & KDEs) ---
+<img width="1465" height="1105" alt="image" src="https://github.com/user-attachments/assets/2c883cdb-6b8b-489f-9b00-f73dcf67503f" />
+
+
+
+# Bivariate Analysis
+
+## Mean Comparison (Crisis vs Non-Crisis)
+
+| Variable      | Non-Crisis (0.0) | Crisis (1.0) |
+|---------------|-----------------|---------------|
+| year          | 1927.92         | 1944.41       |
+| rGDP_pc       | 5,517,008       | 13,438,540    |
+| rGDP_USD      | 227,221         | 336,069       |
+| cons_GDP      | 80.80           | 81.20         |
+| inv_GDP       | 22.38           | 20.93         |
+| finv_GDP      | 21.25           | 20.02         |
+| exports_GDP   | 33.35           | 26.93         |
+| USDfx         | 169.27          | 139.62        |
+| CPI           | 87.19           | 27.05         |
+| infl          | 6.88e+22        | 76.64         |
+
+
+
+
+<img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/4a318672-f6a1-4fc6-b979-f025ddd5aa6b" />
+
+
+<img width="1338" height="1275" alt="image" src="https://github.com/user-attachments/assets/6278fe03-0c3f-4235-acf3-b113a3316e71" />
+
+
+<img width="979" height="903" alt="image" src="https://github.com/user-attachments/assets/fab9a2a9-d1d2-4c33-91a4-69c2fefc7b21" />
+
+
+
+<img width="832" height="545" alt="image" src="https://github.com/user-attachments/assets/5e797822-fd7b-4db4-a98d-f5c8c145223c" />
+
+
+<img width="843" height="545" alt="image" src="https://github.com/user-attachments/assets/6e2d8801-52f8-4d3f-af0d-2c1e58e702c8" />
+
+<img width="839" height="545" alt="image" src="https://github.com/user-attachments/assets/722a1019-6b21-4dfc-8129-f1ced5f6b3e4" />
+
+<img width="839" height="545" alt="image" src="https://github.com/user-attachments/assets/ad70dd96-d353-49e6-b3d5-e0ddbc5705f8" />
+
+
+<img width="1078" height="545" alt="image" src="https://github.com/user-attachments/assets/e0ad4173-ee88-40c4-a677-926caebe765d" />
+
+
+# Outlier Detection
+
+## Outliers Detected Using IQR Method (per variable)
+| Variable      | Outlier Count |
+|---------------|---------------|
+| year          | 3,348         |
+| rGDP_pc       | 3,592         |
+| rGDP_USD      | 2,439         |
+| cons_GDP      | 799           |
+| inv_GDP       | 461           |
+| finv_GDP      | 475           |
+| exports_GDP   | 821           |
+| USDfx         | 4,480         |
+| CPI           | 774           |
+| infl          | 3,200         |
+| pop           | 7,321         |
+| cons_USD      | 2,067         |
+| inv_USD       | 2,438         |
+| finv_USD      | 2,334         |
+| imports_USD   | 3,383         |
+
+## Outliers Detected Using Z-score Method (>|3|)
+| Variable      | Outlier Count |
+
+
+
+Missing values
   
  | Variable      | Missing Count | Missing % |
 | ------------- | ------------- | --------- |
@@ -88,61 +257,6 @@ BankingCrisis, cons_USD, inv_USD, finv_USD, imports_USD
 | pop           | 6,405         | 10.98%    |
 
   
-
-## 🏦 Target Variable Analysis: *Banking Crisis*
-
-### Class Counts
-
-| BankingCrisis | Count  |
-| ------------- | ------ |
-| 0.0           | 19,571 |
-| 1.0           | 362    |
-
-### Class Distribution (%)
-
-| BankingCrisis | Proportion (%) |
-| ------------- | -------------- |
-| 0.0           | 98.18%         |
-| 1.0           | 1.82%          |
-
-> ⚠️ **Observation:**
-> The dataset is **highly imbalanced**, with banking crises representing only about **1.8%** of all observations.
-> This imbalance must be addressed during model training (e.g., SMOTE, class weights, or undersampling).
-
----
-
-## 📊 Descriptive Statistics for Numerical Features
-
-| Feature       | Count  | Mean     | Std      | Min       | 25%      | 50%      | 75%      | Max      |
-| ------------- | ------ | -------- | -------- | --------- | -------- | -------- | -------- | -------- |
-| year          | 58,343 | 1880.58  | 128.68   | 1086.00   | 1835.00  | 1903.00  | 1969.00  | 2030.00  |
-| rGDP_pc       | 22,233 | 1.72e+07 | 1.11e+08 | 4.51e-08  | 6.00e+03 | 2.53e+04 | 2.17e+05 | 1.77e+09 |
-| rGDP_USD      | 16,425 | 2.07e+05 | 1.06e+06 | 7.72e-02  | 3.32e+03 | 1.40e+04 | 8.38e+04 | 2.42e+07 |
-| cons_GDP      | 12,769 | 82.45    | 22.42    | 8.84      | 71.41    | 80.35    | 90.65    | 298.38   |
-| inv_GDP       | 15,256 | 22.91    | 11.27    | -21.55    | 16.08    | 22.07    | 27.83    | 243.18   |
-| finv_GDP      | 14,035 | 21.87    | 10.31    | -4.97     | 15.40    | 21.06    | 26.29    | 157.87   |
-| exports_GDP   | 16,707 | 37.07    | 56.74    | 1.75e-11  | 14.55    | 26.01    | 43.83    | 1168.42  |
-| USDfx         | 23,321 | 195.47   | 1596.12  | 3.49e-16  | 0.57     | 1.34     | 6.91     | 89500.00 |
-| CPI           | 19,358 | 2.93e+09 | 2.40e+11 | 1.73e-15  | 0.53     | 19.61    | 94.52    | 2.75e+13 |
-| infl          | 25,238 | 3.82e+22 | 6.06e+24 | -100.00   | 0.00     | 3.25     | 8.93     | 9.63e+26 |
-| pop           | 51,938 | 13.40    | 67.91    | 0.00      | 0.16     | 1.41     | 5.72     | 1534.73  |
-| BankingCrisis | 19,933 | 0.018    | 0.134    | 0.00      | 0.00     | 0.00     | 0.00     | 1.00     |
-| cons_USD      | 12,464 | 1.55e+05 | 8.66e+05 | 5.84e-08  | 941.88   | 5380.10  | 37433.31 | 2.45e+07 |
-| inv_USD       | 14,148 | 6.17e+04 | 5.03e+05 | -16281.44 | 185.74   | 1237.79  | 9452.12  | 1.80e+07 |
-| finv_USD      | 13,713 | 5.69e+04 | 4.17e+05 | -748.22   | 179.95   | 1099.59  | 9306.72  | 1.35e+07 |
-| imports_USD   | 19,680 | 3.43e+04 | 2.26e+05 | 8.88e-10  | 58.62    | 603.15   | 5409.95  | 2.11e+07 |
-
-> 💡 **Insights:**
->
-> * There’s a **wide variance** in GDP-related indicators — consistent with differences across countries and centuries.
-> * Inflation (`infl`) and CPI show **extreme outliers**, suggesting potential preprocessing (e.g., winsorization or log-scaling).
-> * Population (`pop`) ranges from near zero to over 1,500 million — consistent with historical data for small and large nations.
-> * The dataset includes both **historical** and **projected** values (1086–2030), requiring temporal segmentation for modeling.
-
-Excellent — this correlation matrix reveals a lot about the **structure and relationships** in your macroeconomic panel dataset.
-Here’s a clear, **analytical summary** you can include in your project’s README or notebook:
-
----
 
 ## 🔍 Correlation Matrix Analysis
 
@@ -213,8 +327,10 @@ Here’s a clear, **analytical summary** you can include in your project’s REA
 | `inv_GDP` ↔ `finv_GDP`     | 0.75        | High, likely overlapping measures               |
 | `cons_USD` ↔ `imports_USD` | 0.91        | Both scale with GDP                             |
 
-👉 **Action:** Before modeling, remove or combine one variable from each highly correlated pair to reduce redundancy.
 
+
+
+   
 ---
 
 ### **4. Feature Engineering**
@@ -313,6 +429,5 @@ Here’s a clear, **analytical summary** you can include in your project’s REA
 Developed by **[Your Name]**  
 Focus areas: Economics • Finance • Machine Learning • Data Science  
 
----
 
 
