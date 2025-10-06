@@ -93,31 +93,6 @@ WIP
 | max   | 2030    | 1.767e+09     | 2.419e+07     | 298.38     | 243.18    | 157.87    | 1168.42     | 89500      | 2.750e+13  | 9.635e+26   | 1534.73    | 1.0           | 2.449e+07   | 1.804e+07  | 1.346e+07  | 2.106e+07   |
 
 
-## Top Countries (Value Counts)
-| countryname    | count |
-|----------------|-------|
-| United Kingdom | 945   |
-| Spain          | 754   |
-| Sweden         | 741   |
-| Italy          | 721   |
-| Germany        | 705   |
-
-| ISO3 | count |
-|------|-------|
-| GBR  | 945   |
-| ESP  | 754   |
-| SWE  | 741   |
-| ITA  | 721   |
-| DEU  | 705   |
-
-| id   | count |
-|------|-------|
-| GBR  | 945   |
-| ESP  | 754   |
-| SWE  | 741   |
-| ITA  | 721   |
-| DEU  | 705   |
-
 # Missing Value Analysis
 | Column        | Missing Count | Missing % |
 |---------------|---------------|-----------|
@@ -175,10 +150,6 @@ WIP
 
 
 
-
-<img width="1189" height="590" alt="image" src="https://github.com/user-attachments/assets/4a318672-f6a1-4fc6-b979-f025ddd5aa6b" />
-
-
 <img width="1338" height="1275" alt="image" src="https://github.com/user-attachments/assets/6278fe03-0c3f-4235-acf3-b113a3316e71" />
 
 
@@ -220,10 +191,6 @@ WIP
 | finv_USD      | 2,334         |
 | imports_USD   | 3,383         |
 
-## Outliers Detected Using Z-score Method (>|3|)
-| Variable      | Outlier Count |
-
-
 
 Missing values
   
@@ -252,14 +219,14 @@ Missing values
 <img width="980" height="905" alt="image" src="https://github.com/user-attachments/assets/4c4f422b-b0bb-44a3-a273-2ae6af56e864" />
 
 
-### 🧠 General Observations
+### General Observations
 
 * The correlations across variables are **generally low to moderate**, suggesting a diverse set of macroeconomic indicators without excessive multicollinearity — a good sign for machine learning modeling.
 * However, there are a few clusters of **highly correlated variables** that likely represent overlapping economic concepts.
 
 ---
 
-### 🧩 Key Insights by Variable Group
+### Key Insights by Variable Group
 
 #### **1. GDP and Investment Relationships**
 
