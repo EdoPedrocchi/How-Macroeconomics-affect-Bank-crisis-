@@ -39,17 +39,6 @@ WIP
 ---
 ## 🚀 Project Pipeline
 
-### Data Cleaning & Preprocessing**
-1. **Handle Missing Values:**
-   - Visualize (`missingno` or `sns.heatmap`).
-   - Impute or drop (mean, median, interpolation, or removal).
-2. **Fix Data Types:** Ensure correct numeric and categorical dtypes.
-3. **Handle Outliers:** Winsorize or cap extreme values.
-4. **Scale Numerical Variables:** Standardize or normalize (`StandardScaler`).
-5. **Split Features and Target:**  
-   - `X` = explanatory variables  
-   - `y` = `BankingCrisis`
-
 ---
 
 ### **3. Exploratory Data Analysis (EDA)**
