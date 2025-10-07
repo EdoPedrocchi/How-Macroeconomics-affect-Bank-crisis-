@@ -37,26 +37,13 @@ WIP
 
 
 ---
-## 🚀 Project Pipeline
+## **Exploratory Data Analysis (EDA)**
 
----
-
-### **3. Exploratory Data Analysis (EDA)**
-1. **Univariate Analysis:**  
-   - Check feature distributions and class balance.  
-2. **Bivariate Analysis:**  
-   - Correlation heatmaps, pairplots, and mean comparisons (crisis vs. non-crisis).  
-3. **Temporal & Cross-Country Trends:**  
-   - Plot macroeconomic variables over time and across countries.
-  
----
-# Initial Data Overview
-
-## Dataset Shape
+### Dataset Shape
 - **Rows:** 58,343  
 - **Columns:** 19
 
-## Data Types
+### Data Types
 | Column          | Type    |
 |-----------------|---------|
 | countryname     | object  |
@@ -80,7 +67,7 @@ WIP
 | imports_USD     | float64 |
 
 
-## Descriptive Statistics
+### Descriptive Statistics
 |       | year     | rGDP_pc       | rGDP_USD      | cons_GDP    | inv_GDP    | finv_GDP   | exports_GDP | USDfx       | CPI         | infl         | pop        | BankingCrisis | cons_USD     | inv_USD     | finv_USD    | imports_USD |
 |-------|---------|---------------|---------------|------------|-----------|-----------|-------------|------------|------------|-------------|------------|---------------|-------------|------------|------------|-------------|
 | count | 58343   | 22233         | 16425         | 12769      | 15256     | 14035     | 16707       | 23321      | 19358      | 25238       | 51938      | 19933         | 12464       | 14148      | 13713      | 19680       |
@@ -93,7 +80,7 @@ WIP
 | max   | 2030    | 1.767e+09     | 2.419e+07     | 298.38     | 243.18    | 157.87    | 1168.42     | 89500      | 2.750e+13  | 9.635e+26   | 1534.73    | 1.0           | 2.449e+07   | 1.804e+07  | 1.346e+07  | 2.106e+07   |
 
 
-# Missing Value Analysis
+### Missing Value Analysis
 | Column        | Missing Count | Missing % |
 |---------------|---------------|-----------|
 | cons_USD      | 45,879        | 78.64     |
@@ -112,7 +99,7 @@ WIP
 | infl          | 33,105        | 56.74     |
 | pop           | 6,405         | 10.98     |
 
-# Target Variable Analysis: `BankingCrisis`
+### Target Variable Analysis: `BankingCrisis`
 | Value | Count |
 |-------|-------|
 | 0.0   | 19,571|
@@ -130,10 +117,7 @@ WIP
 <img width="1465" height="1105" alt="image" src="https://github.com/user-attachments/assets/2c883cdb-6b8b-489f-9b00-f73dcf67503f" />
 
 
-
-# Bivariate Analysis
-
-## Mean Comparison (Crisis vs Non-Crisis)
+### Mean Comparison (Crisis vs Non-Crisis)
 
 | Variable      | Non-Crisis (0.0) | Crisis (1.0) |
 |---------------|-----------------|---------------|
@@ -170,9 +154,8 @@ WIP
 <img width="1078" height="545" alt="image" src="https://github.com/user-attachments/assets/e0ad4173-ee88-40c4-a677-926caebe765d" />
 
 
-# Outlier Detection
 
-## Outliers Detected Using IQR Method (per variable)
+### Outliers Detected Using IQR Method (per variable)
 | Variable      | Outlier Count |
 |---------------|---------------|
 | year          | 3,348         |
@@ -214,7 +197,7 @@ Missing values
 
   
 
-## 🔍 Correlation Matrix Analysis
+### Correlation Matrix 
 
 <img width="980" height="905" alt="image" src="https://github.com/user-attachments/assets/4c4f422b-b0bb-44a3-a273-2ae6af56e864" />
 
