@@ -1,5 +1,11 @@
 # 🏦 Global Banking Crisis Prediction (1086–2030)
 
+Domande per il prof:
+- variabile target sbilanicata ( 0.0=19,571|
+| 1.0=362)
+- eliminare guerre? (1914 = 12 default)
+- elimninare crisi del 2008? (=17 default)
+
 ## 📘 Project Overview
 
 This project aims to **predict banking crises** using a large-scale **panel dataset of macroeconomic variables** across **241 countries**, covering historical data from **1086 to 2024** and projections up to **2030**.
@@ -301,6 +307,8 @@ WIP
 ---
 
 ### **Model Evaluation**
+
+WIP
  
 
 ---
