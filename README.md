@@ -5,6 +5,11 @@ Domande per il prof:
 | 1.0=362)
 - eliminare guerre? (1914 = 12 default)
 - elimninare crisi del 2008? (=17 default)
+- possibile approccio?
+Target = 1.82% → molto sbilanciato.
+Divido in train/test stratificato (mantengo proporzione crisi/non crisi nel test).
+Applico SMOTE(da capire) sul training set per generare più casi di crisi.
+
 - è un problema se le scrivo?
 
 ## 📘 Project Overview
