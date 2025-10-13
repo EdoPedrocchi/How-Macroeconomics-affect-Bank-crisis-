@@ -309,8 +309,9 @@ WIP
 
 ### **Model Selection & Training**
 1. **Logistic Regression** (interpretable benchmark).  
-2. **Tree-Based Models:** Random Forest, XGBoost, 
-3. **Advanced Alternatives:** SVMs and DeepLearning.  
+2. **Tree-Based Models:** Random Forest, XGBoost,
+3. Nive bayes
+4. **Advanced Alternatives:** SVMs and DeepLearning.  
 
 ---
 
