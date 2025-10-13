@@ -10,7 +10,9 @@ Target = 1.82% → molto sbilanciato.
 Divido in train/test stratificato (mantengo proporzione crisi/non crisi nel test).
 Applico SMOTE(da capire) sul training set per generare più casi di crisi.
 
+
 - è un problema se le scrivo?
+- accetta tesisisti?
 
 ## 📘 Project Overview
 
